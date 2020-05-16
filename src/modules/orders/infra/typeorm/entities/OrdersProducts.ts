@@ -17,17 +17,12 @@ class OrdersProducts {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(_ => Order, order => order.order_products, {
-    eager: true,
-  })
-  @JoinColumn({ name: 'order_id ' })
+  @ManyToOne(_ => Order, order => order.order_products)
+  @JoinColumn({ name: 'order_id' })
   order: Order;
 
-  @ManyToMany(_ => Product, product => product.order_products, {
-    cascade: ['insert'],
-    eager: true,
-  })
-  @JoinColumn({ name: 'product_id ' })
+  @ManyToMany(_ => Product, product => product.order_products)
+  @JoinColumn({ name: 'product_id' })
   product: Product;
 
   @Column()

@@ -25,7 +25,10 @@ class Order {
   @Column()
   customer_id: string;
 
-  @OneToMany(_ => OrdersProducts, ordersProducts => ordersProducts.order)
+  @OneToMany(_ => OrdersProducts, ordersProducts => ordersProducts.order, {
+    cascade: true,
+    eager: true,
+  })
   order_products: OrdersProducts[];
 
   @CreateDateColumn()
